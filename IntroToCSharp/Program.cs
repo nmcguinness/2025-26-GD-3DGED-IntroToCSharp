@@ -27,10 +27,10 @@ namespace IntroToCSharp
         {
             //magnitude
             GDEngine.Math.Vector3 a = new GDEngine.Math.Vector3(3, 4, 5);
-            Console.WriteLine("Mag: " + a.Magnitude());
+            Console.WriteLine("Mag: " + a.Magnitude);
 
             var b = new GDEngine.Math.Vector3(0,0,0);
-            Console.WriteLine("Mag: " + b.Magnitude());
+            Console.WriteLine("Mag: " + b.Magnitude);
 
             //normalize
             Console.WriteLine("Before normalization: " + a);
@@ -38,7 +38,7 @@ namespace IntroToCSharp
             Console.WriteLine("After normalization: " + a);
 
             //normalize + mag
-            Console.WriteLine("Mag after normalization: " + a.Magnitude());
+            Console.WriteLine("Mag after normalization: " + a.Magnitude);
 
             //dot
             var xAxis = new GDEngine.Math.Vector3(1, 0, 0);

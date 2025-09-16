@@ -1,5 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
+﻿
 namespace GDEngine.Math
 {
     /// <summary>
@@ -21,7 +20,7 @@ namespace GDEngine.Math
             set => _x = float.IsNaN(value) ? 0 : value;  //TODO - add isNan
         }
 
-   
+
         public float Y
         {
             get => _y;
@@ -37,11 +36,14 @@ namespace GDEngine.Math
             set => _z = float.IsNaN(value) ? 0 : value; //TODO - add isNan
         }
 
+        public float Magnitude => (float)System.Math.Sqrt(_x * _x + _y * _y + _z * _z);
+        public float SqrMagnitude => _x * _x + _y * _y + _z * _z;
+
         #endregion
 
         #region Constructors
         public Vector3()  //default
-            : this(0,0,0)
+            : this(0, 0, 0)
         {
 
         }
@@ -54,22 +56,13 @@ namespace GDEngine.Math
 
         #endregion
 
-        //Class-specific
-        public float Magnitude()
-        {
-            
-            return (float)System.Math.Sqrt(_x * _x
-                                        + _y * _y
-                                            + _z * _z);
-        }
-
-     //   public Vector3 Normalized => this / Magnitude();
+        #region Class-specific
 
         public float Dot(Vector3 other)
         {
-            return _x * other.X 
+            return _x * other.X
                         + _y * other.Y
-                               + _z * other.Z;       
+                               + _z * other.Z;
         }
 
         public static float Dot(Vector3 a, Vector3 b)
@@ -79,12 +72,27 @@ namespace GDEngine.Math
                             + a.Z * b.Z;
         }
 
-        //Cross, (static) Cross
+        public Vector3 Cross(Vector3 other)
+        {
+            return new Vector3(
+                _y * other.Z - _z * other.Y,
+                _z * other.X - _x * other.Z,
+                _x * other.Y - _y * other.X
+            );
+        }
 
-
+        public static Vector3 Cross(Vector3 a, Vector3 b)
+        {
+            return new Vector3(
+                a.Y * b.Z - a.Z * b.Y,
+                a.Z * b.X - a.X * b.Z,
+                a.X * b.Y - a.Y * b.X
+            );
+        } 
+  
         public void Normalize() //mutating
         {
-            float mag = Magnitude();
+            float mag = Magnitude;
 
             if (mag == 0)
                 return;
@@ -94,13 +102,14 @@ namespace GDEngine.Math
             _z /= mag;
         }
 
+        #endregion
 
 
         #region Overrides
         public override string ToString()
         {
             return $"({_x},{_y},{_z})";
-        } 
+        }
         #endregion
 
     }

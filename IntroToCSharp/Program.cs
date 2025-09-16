@@ -1,4 +1,8 @@
 ﻿
+
+
+using System.Numerics;
+
 namespace IntroToCSharp
 {
     public class Program
@@ -14,7 +18,27 @@ namespace IntroToCSharp
         {
             DemoMathMethods();
 
-            DemoVector3();  
+            DemoVector3();
+
+            DemoClassSpecific();
+        }
+
+        private void DemoClassSpecific()
+        {
+            //magnitude
+            GDEngine.Math.Vector3 a = new GDEngine.Math.Vector3(3, 4, 5);
+            Console.WriteLine("Mag: " + a.Magnitude());
+
+            var b = new GDEngine.Math.Vector3(0,0,0);
+            Console.WriteLine("Mag: " + b.Magnitude());
+
+            //normalize
+            Console.WriteLine("Before normalization: " + a);
+            a.Normalize();
+            Console.WriteLine("After normalization: " + a);
+
+            Console.WriteLine("Mag after normalization: " + a.Magnitude());
+            //dot
         }
 
         private void DemoMathMethods()

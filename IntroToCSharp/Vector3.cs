@@ -13,6 +13,12 @@
 
         #region Properties
 
+        public float X
+        {
+            get => _x;
+            set => _x = value < 0 ? 0 : value;  //TODO - add isNan
+        }
+
         public float Y
         {
             get => _y;

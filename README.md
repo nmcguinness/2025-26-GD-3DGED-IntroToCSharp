@@ -73,7 +73,7 @@ The module descriptor can be viewed [here](https://courses.dkit.ie/index.cfm/pag
 ## Exercises
 
 - [Namespace Definition](Exercises/Namespace%20Definition.md)
-- [Class Definition & Inheritance](Exercises/Class%20Definition%20&%20Inheritance.md)
+- [Class Definition](Exercises/Class%20Definition.md)
 - [Lists & Predicates](Exercises/Lists%20and%20Predicates.md)
 - [Value & Reference Types](Exercises/Value%20and%20Reference%20Types.md)
 - [Structs and Enums](Exercises/Structs%20and%20Enums.md)

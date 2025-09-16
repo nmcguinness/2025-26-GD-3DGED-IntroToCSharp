@@ -37,8 +37,27 @@ namespace IntroToCSharp
             a.Normalize();
             Console.WriteLine("After normalization: " + a);
 
+            //normalize + mag
             Console.WriteLine("Mag after normalization: " + a.Magnitude());
+
             //dot
+            var xAxis = new GDEngine.Math.Vector3(1, 0, 0);
+            var yAxis = new GDEngine.Math.Vector3(0, 1, 0);
+            var zAxis = new GDEngine.Math.Vector3(0, 0, 1);
+            //negative xAxis
+
+            var dotXY = xAxis.Dot(yAxis);  //90 degrees?
+            var dotYZ = GDEngine.Math.Vector3.Dot(yAxis, zAxis); //90 degrees?
+
+            Console.WriteLine($"Dot between XY is {dotXY}");
+            Console.WriteLine($"Dot between XX is {xAxis.Dot(xAxis)}");
+
+            //lets get the angle from the Dot product
+            var angleXY = Math.Acos(dotXY);
+            Console.WriteLine($"angle between XY is {angleXY} radians");
+
+            //in CoolUtilities write a method called ToDegrees(float radians)
+
         }
 
         private void DemoMathMethods()

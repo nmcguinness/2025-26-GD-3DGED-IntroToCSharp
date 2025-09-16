@@ -1,4 +1,6 @@
-﻿namespace GDEngine.Math
+﻿using System.Reflection.Metadata.Ecma335;
+
+namespace GDEngine.Math
 {
     /// <summary>
     /// Represents a 3D vector with X, Y, and Z components.
@@ -16,31 +18,79 @@
         public float X
         {
             get => _x;
-            set => _x = value < 0 ? 0 : value;  //TODO - add isNan
+            set => _x = float.IsNaN(value) ? 0 : value;  //TODO - add isNan
         }
 
+   
         public float Y
         {
             get => _y;
-            set => _y = value < 0 ? 0 : value;  //TODO - add isNan
+            set
+            {
+                _y = float.IsNaN(value) ? 0 : value;  //TODO - add isNan
+            }
         }
 
         public float Z
         {
             get => _z;
-            set => _z = value; //TODO - add isNan
+            set => _z = float.IsNaN(value) ? 0 : value; //TODO - add isNan
         }
 
         #endregion
 
         #region Constructors
-        public Vector3(float x, float y, float z)
+        public Vector3()  //default
+            : this(0,0,0)
         {
-            _x = x;
-            _y = y;
-            _z = z;
+
         }
+        public Vector3(float x, float y, float z) //full
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
         #endregion
+
+        //Class-specific
+        public float Magnitude()
+        {
+            
+            return (float)System.Math.Sqrt(_x * _x
+                                        + _y * _y
+                                            + _z * _z);
+        }
+
+     //   public Vector3 Normalized => this / Magnitude();
+
+        public float Dot(Vector3 other)
+        {
+            return _x * other.X 
+                        + _y * other.Y
+                               + _z * other.Z;       
+        }
+
+        public static float Dot(Vector3 a, Vector3 b)
+        {
+
+        }
+
+
+        public void Normalize() //mutating
+        {
+            float mag = Magnitude();
+
+            if (mag == 0)
+                return;
+
+            _x /= mag;
+            _y /= mag;
+            _z /= mag;
+        }
+
+
 
         #region Overrides
         public override string ToString()

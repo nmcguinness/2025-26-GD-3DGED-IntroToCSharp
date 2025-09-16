@@ -3,6 +3,7 @@
 ## Overview 
 
 This repository contains code samples used to learn the basics of C# in preparation for the development of the code for this module.
+The module descriptor can be viewed [here](https://courses.dkit.ie/index.cfm/page/module/moduleId/55573).
 
 ## Contents
 
@@ -15,7 +16,7 @@ This repository contains code samples used to learn the basics of C# in preparat
 | 4  | <ul><li>- [ ] </li></ul> | **Class Definition & Inheritance**        | Class structures, inheritance, and polymorphism in game development.        | [Class & Object](https://www.geeksforgeeks.org/c-sharp-class-and-object/)                                      |
 | 5  | <ul><li>- [ ] </li></ul> | **Interfaces**                            | Implementing interfaces for game systems (e.g., input handling, AI).        | [Interfaces](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/)                    |
 | 6  | <ul><li>- [ ] </li></ul> | **Types (struct, enum)**                  | Use of `struct` for data (e.g., Vector3) and `enum` for states in Unity.    | [Struct](https://www.tutorialsteacher.com/csharp/csharp-struct), [Enum](https://www.geeksforgeeks.org/c-sharp-enumeration-or-enum/) |
-| 9  | <ul><li>- [ ] </li></ul> | **Properties**                            | Using properties to control access to fields in Unity game objects.         | [C# Properties](https://www.geeksforgeeks.org/c-sharp-properties/)                                             |
+| 9  | <ul><li>- [x] </li></ul> | **Properties**                            | Using properties to control access to fields in Unity game objects.         | [C# Properties](https://www.geeksforgeeks.org/c-sharp-properties/)                                             |
 | 18 | <ul><li>- [ ] </li></ul> | **Static Methods & Fields**               | Using static methods and fields for global utilities (e.g., GameManager).   | [Static Methods](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/static-classes-and-static-class-members) |
 | 16 | <ul><li>- [ ] </li></ul> | **Operator Overloading**                  | Overloading operators for custom operations in game physics or math.        | [Operator Overloading](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/operator-overloading) |
 | 17 | <ul><li>- [ ] </li></ul> | **Indexers**                              | Simplifying access to collections in game classes (e.g., inventory).        | [Indexers](https://www.tutorialspoint.com/csharp/csharp_indexers.htm)                                          |
@@ -54,6 +55,10 @@ This repository contains code samples used to learn the basics of C# in preparat
 | 7  | <ul><li>- [ ] </li></ul> | **String Interpolation**                  | Efficient string handling for debugging and logging in Unity.               | [String interpolation](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated) |
 | 8  | <ul><li>- [ ] </li></ul> | **Constructor Chaining**                  | Creating versatile constructors using constructor chaining.                 | [Constructor Chaining](https://www.delftstack.com/howto/csharp/constructor-chaining-in-csharp/)                |
 
+## Coding Conventions
+
+- [Coding Conventions](Notes/CodingConventions.md)
+
 ## Required Reading 
 
 - [Tutorials Teacher - Learn C#](https://www.tutorialsteacher.com/csharp)
@@ -73,9 +78,6 @@ This repository contains code samples used to learn the basics of C# in preparat
 - [Value & Reference Types](Exercises/Value%20and%20Reference%20Types.md)
 - [Structs and Enums](Exercises/Structs%20and%20Enums.md)
 - [Keywords](Exercises/Keywords.md)
-
-## Design Exercises
-
 - [Design Exercises](Exercises/Design%20Exercises.md)
 
 ## Useful Links
@@ -85,5 +87,7 @@ This repository contains code samples used to learn the basics of C# in preparat
 ## To Do 
 
 - [Weekly Development Plan](ToDo.md)
+
+
 
 

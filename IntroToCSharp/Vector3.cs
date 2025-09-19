@@ -1,4 +1,6 @@
 ﻿
+using System.Runtime.Intrinsics.X86;
+
 namespace GDEngine.Math
 {
     /// <summary>
@@ -19,27 +21,37 @@ namespace GDEngine.Math
         public static Vector3 Forward => new Vector3(0, 0, 1);
         public static Vector3 UnitX => new Vector3(1, 0, 0);
         public static Vector3 UnitY => new Vector3(0, 1, 0);
-        public static Vector3 UnitZ => new Vector3(0, 0, 1); 
+        public static Vector3 UnitZ => new Vector3(0, 0, 1);
         #endregion
 
+        #region Overloaded Operators
         //how to overload operator in C#? +, -, *, / 
         //myVec = yourVec + theirVec
+        public static Vector3 operator +(Vector3 a, Vector3 b)
+        {
+            return new Vector3(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+        }
 
-        //public static Vector3 Zero
-        //{
-        //    get
-        //    {
-        //        return new Vector3(0, 0, 0);
-        //    }
-        //}
+        public static Vector3 operator /(Vector3 a, Vector3 b)
+        {
+            //  if (b.Magnitude == 0)
+            //     throw new DivideByZeroException("Error in component (b)");
 
+            if (b.X == 0 || b.Y == 0 || b.Z == 0)
+                throw new DivideByZeroException("Error in component (b)");
+
+            return new Vector3(a.X / b.X, a.Y / b.Y, a.Z / b.Z);
+        }
+
+        //TODO - add -, * 
+        #endregion
 
         #region Properties
 
         public float X
         {
             get => _x;
-            set => _x = float.IsNaN(value) ? 0 : value;  //TODO - add isNan
+            set => _x = float.IsNaN(value) ? 0 : value;  
         }
 
 
@@ -48,14 +60,14 @@ namespace GDEngine.Math
             get => _y;
             set
             {
-                _y = float.IsNaN(value) ? 0 : value;  //TODO - add isNan
+                _y = float.IsNaN(value) ? 0 : value;  
             }
         }
 
         public float Z
         {
             get => _z;
-            set => _z = float.IsNaN(value) ? 0 : value; //TODO - add isNan
+            set => _z = float.IsNaN(value) ? 0 : value; 
         }
 
         public float Magnitude => (float)System.Math.Sqrt(_x * _x + _y * _y + _z * _z);
@@ -132,6 +144,9 @@ namespace GDEngine.Math
             return $"({_x},{_y},{_z})";
         }
         #endregion
+
+
+
 
     }
 }

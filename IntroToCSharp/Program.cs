@@ -60,6 +60,23 @@ namespace IntroToCSharp
 
             //in CoolUtilities write a method called ToDegrees(float radians)
 
+            //operator overloading
+            var vecResult = Vector3.UnitY + Vector3.UnitX;
+            
+            //more operator overloading
+            var vecOtherResult = a / b;
+
+            Vector3 tree1Pos = new Vector3(2,4,6);
+            Vector3 tree2Pos = new Vector3(2, 4, 6);
+            
+            //comparing by object address on the heap
+            if (tree1Pos == tree2Pos)
+                Console.WriteLine("Trees at same xyz");
+            else
+                Console.WriteLine("Trees at different xyz");
+
+            Console.WriteLine(tree1Pos.Equals(tree2Pos));
+
         }
 
         private void DemoMathMethods()

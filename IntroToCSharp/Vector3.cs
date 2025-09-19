@@ -1,4 +1,5 @@
 ﻿
+using System.Numerics;
 using System.Runtime.Intrinsics.X86;
 
 namespace GDEngine.Math
@@ -143,6 +144,35 @@ namespace GDEngine.Math
         {
             return $"({_x},{_y},{_z})";
         }
+
+        public override bool Equals(object? obj)
+        {
+            //if (!(obj is Vector3))
+            //    return false;
+
+            var other = obj as Vector3;
+
+            if (other == null)
+                return false;
+
+            return _x == other.X
+                && _y == other.Y
+                && _z == other.Z;
+        }
+
+        //Shallow and deep-clone
+        public Vector3 Clone()
+        {
+            return this; //returns address of object
+        }
+
+        public Vector3 DeepCopy()
+        {
+            return new Vector3(_x, _y, _z); //returns new object with new address
+        }
+
+
+
         #endregion
 
 

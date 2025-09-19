@@ -25,6 +25,8 @@ namespace IntroToCSharp
 
         private void DemoClassSpecific()
         {
+           // using Vector3 = GDEngine.Math.Vector3;
+
             //magnitude
             GDEngine.Math.Vector3 a = new GDEngine.Math.Vector3(3, 4, 5);
             Console.WriteLine("Mag: " + a.Magnitude);

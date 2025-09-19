@@ -12,6 +12,28 @@ namespace GDEngine.Math
         private float _x, _y, _z;
         #endregion
 
+        #region Static Helpers
+        public static Vector3 Zero => new Vector3(0, 0, 0);
+        public static Vector3 One => new Vector3(1, 1, 1);
+        public static Vector3 Up => new Vector3(0, 1, 0);
+        public static Vector3 Forward => new Vector3(0, 0, 1);
+        public static Vector3 UnitX => new Vector3(1, 0, 0);
+        public static Vector3 UnitY => new Vector3(0, 1, 0);
+        public static Vector3 UnitZ => new Vector3(0, 0, 1); 
+        #endregion
+
+        //how to overload operator in C#? +, -, *, / 
+        //myVec = yourVec + theirVec
+
+        //public static Vector3 Zero
+        //{
+        //    get
+        //    {
+        //        return new Vector3(0, 0, 0);
+        //    }
+        //}
+
+
         #region Properties
 
         public float X
@@ -103,7 +125,6 @@ namespace GDEngine.Math
         }
 
         #endregion
-
 
         #region Overrides
         public override string ToString()

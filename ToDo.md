@@ -23,32 +23,55 @@ The work is structured week-by-week and will be developed **live in class** as a
 - [x] Add `class Vector3`
 - [x] Add `fields` (`X`, `Y`, `Z`)
 - [x] Add constructor `(float x, float y, float z)`
-- [ ] Add default constructor and `constructor chaining`
+- [x] Add default constructor and `constructor chaining`
 - [x] Add `properties` (get/set) for `X`, `Y`, `Z`
 - [x] Add `validation` on set (e.g., disallow NaN, or clamp with ternary operator)
 - [x] Add `ToString()` override
-- [ ] Add `Èquals()` override
-- [ ] Introduce `#region` and `#endregion` for organizing code
-  - [ ] Group `fields` & `properties`
-  - [ ] Group `constructors`
-  - [ ] Group `methods`
-  - [ ] Group `operator overloads`
-  - [ ] Group `static helpers`
-- [ ] Discuss pros/cons of using `#region` (readability vs collapsing code hides detail)
-- [ ] Add `Magnitude` and `SqrMagnitude` properties
-- [ ] Add `Normalize()` method (mutates vector)
-- [ ] Add `Normalized` property (returns new normalized vector)
-- [ ] Add `Dot(Vector3 a, Vector3 b)` static method
-- [ ] Add `Cross(Vector3 a, Vector3 b)` static method
-- [ ] Add operator overloads: `+`, `-`, `*`, `/`
-- [ ] Add static helpers: `Zero`, `One`, `Up`, `Down`, `Forward`, `Backward`
+- [x] Add `Equals()` override
+- [x] Introduce `#region` and `#endregion` for organizing code
+  - [x] Group `fields` & `properties`
+  - [x] Group `constructors`
+  - [x] Group `methods`
+  - [x] Group `operator overloads`
+  - [x] Group `constants`
+- [x] Discuss pros/cons of using `#region` (readability vs collapsing code hides detail)
+- [x] Add `Magnitude` 
+- [ ] Add `SqrMagnitude` 
+- [x] Add `Normalize()` method (mutates vector)
+- [x] Add `Normalized` property (returns new normalized vector)
+- [x] Add `Dot(Vector3 a, Vector3 b)` static method
+- [x] Add `Cross(Vector3 a, Vector3 b)` static method
+- [x] Add operator overloads: `+`, `-`, `*`, `/`
+- [x] Add static helpers: `Zero`, `One`, `Up`, `Down`, `Forward`, `Backward`
 - [ ] Discuss `struct` vs `class` (value vs reference types)
 - [ ] Discuss performance: `SqrMagnitude` vs `Magnitude`
+- [x] Tidy Program demos
+
+### Week 2
 
 #### Extensions: Cloning & Code Organization
-- [ ] Add `Clone()` method (shallow copy using `MemberwiseClone`)
-- [ ] Add deep cloning method (`DeepClone()`) – manually copy all fields
+- [x] Add `Clone()` method (shallow copy using `MemberwiseClone`)
+- [x] Add deep cloning method (`DeepClone()`) – manually copy all fields
 - [ ] Demonstrate difference between shallow vs deep copies
+
+#### C# Extension: Transform3D Class
+- [x] Add `class Transform` in `GDEngine.Scene`
+- [x] Add `fields` for Position, Rotation, Scale
+- [x] Add default constructor (sets Position=Zero, Rotation=Zero, Scale=One)
+- [ ] Add constructor chaining for `Transform(position)`
+- [x] Add `Translate(Vector3 translation)` method
+- [x] Add `Rotate(Vector3 eulerAngles)` method
+- [x] Add `ScaleBy(Vector3 scaleFactors)` method
+- [x] Add `ToString()` override
+- [ ] Add `Clone()` and `DeepCopy()` methods
+- [ ] Add `Forward`, `Right`, and `Up` derived properties
+- [ ] Demonstrate modifying Position and observing effect on copies (shallow vs deep)
+- [ ] Add List demo (using Vector3, Transform3D, etc)
+- [ ] Add predicate demo
+- [ ] Add Lambda expression demos
+- [ ] Add Lambda predicate to filter list contents using FindAll
+- [ ] Add methods to demonstrate other List methods taking predicate (e.g., Exists, TrueForAll, RemoveAll)
+- [ ] Discuss difference between Euler angles and Quaternions
 
 #### Testing: Using MSTest
 - [ ] Create a **separate MSTest project** in the solution (`GDEngine.Tests`)

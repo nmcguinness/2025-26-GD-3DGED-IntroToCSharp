@@ -6,7 +6,7 @@
     /// </summary>
     /// 
     /// <see href="https://en.wikipedia.org/wiki/Euler_angles">Euler angles</see> (degrees).
-    public class Transform
+    public class Transform3D
     {
         #region Fields
         private Maths.Vector3 _position;
@@ -38,18 +38,26 @@
         #endregion
 
         #region Constructors
-        public Transform() //TODO - constructor chaining
+        public Transform3D() //TODO - constructor chaining
         {
             _position = Maths.Vector3.Zero;
             _rotation = Maths.Vector3.Zero;
             _scale = Maths.Vector3.One;
         }
 
-        public Transform(Maths.Vector3 position)
+        public Transform3D(Maths.Vector3 position)
         {
             _position = position;
             _rotation = Maths.Vector3.Zero;
             _scale = Maths.Vector3.One;
+        }
+
+        public Transform3D(Maths.Vector3 position,
+            Maths.Vector3 rotation, Maths.Vector3 scale)
+        {
+            _position = position;
+            _rotation = rotation;
+            _scale = scale;
         }
         #endregion
 
@@ -76,7 +84,20 @@
 
         public override string ToString()
         {
-            return $"Transform(Position={_position}, Rotation={_rotation}, Scale={_scale})";
+            return $"Transform3D(Position={_position}, Rotation={_rotation}, Scale={_scale})";
+        }
+        #endregion
+
+        #region Cloning
+        public object Clone() //shallow-copy
+        {
+            return this;
+        }
+
+        public Transform3D DeepCopy() //full/seperate object in RAM
+        {
+            return new Transform3D(_position.DeepCopy(),
+                _rotation.DeepCopy(), _scale.DeepCopy());
         }
         #endregion
 

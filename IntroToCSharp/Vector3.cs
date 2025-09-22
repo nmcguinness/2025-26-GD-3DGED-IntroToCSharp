@@ -78,7 +78,7 @@
         #region Overrides
         // Using number format strings - https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings
         public override string ToString() =>
-            $"({_x}, {_y}, {_z})";
+            $"({_x:F2}, {_y:F2}, {_z:F2})";
         #endregion
 
         #region Cloning

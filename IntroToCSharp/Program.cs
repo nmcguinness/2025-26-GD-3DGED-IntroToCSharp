@@ -1,4 +1,5 @@
 ﻿using GDEngine.Maths;
+using GDEngine.Scene;
 using System.Reflection.Metadata.Ecma335;
 
 namespace GDEngine
@@ -199,10 +200,10 @@ namespace GDEngine
         {
             Console.WriteLine("\n--- Transform3D Instantiation ---");
 
-            var t1 = new GDEngine.Scene.Transform();
+            var t1 = new Scene.Transform3D();
             Console.WriteLine("Default constructor: " + t1);
 
-            var t2 = new GDEngine.Scene.Transform(new GDEngine.Maths.Vector3(5, 1, 0));
+            var t2 = new Scene.Transform3D(new Vector3(5, 1, 0));
             Console.WriteLine("Constructor with position (5,1,0): " + t2);
         }
 
@@ -210,10 +211,10 @@ namespace GDEngine
         {
             Console.WriteLine("\n--- Transform3D Translate ---");
 
-            var t = new GDEngine.Scene.Transform();
+            var t = new Scene.Transform3D();
             Console.WriteLine("Before translation: " + t);
 
-            t.Translate(new GDEngine.Maths.Vector3(1, 2, 3));
+            t.Translate(new Vector3(1, 2, 3));
             Console.WriteLine("After Translate(1,2,3): " + t);
         }
 
@@ -221,7 +222,7 @@ namespace GDEngine
         {
             Console.WriteLine("\n--- Transform3D Rotate ---");
 
-            var t = new GDEngine.Scene.Transform();
+            var t = new GDEngine.Scene.Transform3D();
             Console.WriteLine("Before rotation: " + t);
 
             t.Rotate(new GDEngine.Maths.Vector3(0, 90, 0));
@@ -232,7 +233,7 @@ namespace GDEngine
         {
             Console.WriteLine("\n--- Transform3D Scale ---");
 
-            var t = new GDEngine.Scene.Transform();
+            var t = new GDEngine.Scene.Transform3D();
             Console.WriteLine("Before scale: " + t);
 
             t.ScaleBy(new GDEngine.Maths.Vector3(2, 1, 0.5f));
@@ -241,23 +242,21 @@ namespace GDEngine
 
         private void DemoTransform3DCopying()
         {
-            //Console.WriteLine("\n--- Transform3D Copying (Shallow vs Deep) ---");
+            Console.WriteLine("\n--- Transform3D Copying (Shallow vs Deep) ---");
+            Transform3D t1 = new Transform3D(Vector3.Zero,
+                Vector3.Zero, Vector3.One * 4);
 
-            //var original = new GDEngine.Scene.Transform(new GDEngine.Math.Vector3(2, 3, 4));
-            //Console.WriteLine("Original: " + original);
+            //lets make a mistake and make SHALLOW COPY
+            Transform3D shallowT1 = t1.Clone() as Transform3D;
+            Transform3D deepT1 = t1.DeepCopy();
 
-            //var shallow = (GDEngine.Scene.Transform)original.Clone();
-            //var deep = original.DeepCopy();
+            //move the first tank
+            t1.Translate(new Vector3(5, 10, 20));
 
-            //Console.WriteLine("Shallow copy: " + shallow);
-            //Console.WriteLine("Deep copy: " + deep);
-
-            //// Modify original
-            //original.Position = new GDEngine.Math.Vector3(99, 99, 99);
-            //Console.WriteLine("\nAfter modifying original position:");
-            //Console.WriteLine("Original: " + original);
-            //Console.WriteLine("Shallow: " + shallow);
-            //Console.WriteLine("Deep: " + deep);
+            //oops the 2nd moved too!
+            Console.WriteLine("t1: " + t1);
+            Console.WriteLine("shallowT1: " + shallowT1);
+            Console.WriteLine("deepT1: " + deepT1);
         }
 
         #endregion

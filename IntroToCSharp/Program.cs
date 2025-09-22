@@ -1,5 +1,6 @@
 ﻿using GDEngine.Maths;
 using GDEngine.Scene;
+using System.Numerics;
 using System.Reflection.Metadata.Ecma335;
 
 namespace GDEngine
@@ -247,7 +248,7 @@ namespace GDEngine
                 Vector3.Zero, Vector3.One * 4);
 
             //lets make a mistake and make SHALLOW COPY
-            Transform3D shallowT1 = t1.Clone() as Transform3D;
+            Transform3D? shallowT1 = t1.Clone() as Transform3D;
             Transform3D deepT1 = t1.DeepCopy();
 
             //move the first tank
@@ -272,18 +273,96 @@ namespace GDEngine
         #region Action, Func, Predicate, Lambda
         private void DemoAction()
         {
+            //an action perform operation on parameter(s) and return void
+            Action<string> toLowerAndPrint
+                = s => Console.WriteLine(s.ToLower());
 
+            toLowerAndPrint("RoBERtA");
+
+            // Action<string> toLowerAndPrint
+            //= public string DoSomething(string s)
+            // {
+
+            //     Console.WriteLine(s.ToLower());
+            // }
+
+            Action<int> testNegativeAndNotify
+                = (number)
+                =>
+                {
+                    string msg = number > 0 ? "Positive message" : "Negative message";
+                    Console.WriteLine(msg);
+                };
+
+            Action<int> dblValue = x => Console.WriteLine(x * 2);
+
+            Action<int, int> playSound
+                = (freq, timeMs) => Console.Beep(freq, timeMs);
+
+            playSound(4000, 3000);
+            Beep(6000, 2000);
         }
+
+        public void DoSomethingFunky(Action<int, int> theAction, 
+            int p1, int p2)
+        {
+            theAction(p1, p2);
+        }
+
+        //public void ExecuteList(List<Action<Player>> actionList,
+        //    Player target)
+        //{
+
+        //}
+
+
+        public void Beep(int freq, int timeMs)
+        {
+            Console.Beep(freq, timeMs);
+        }
+
+
 
         private void DemoFunc()
         {
-         
+            //a func is an action with a RETURN type
+
+            Func<int, int> sqrValue
+                = banana => banana * banana;
+            
+            var squaredValue = sqrValue(9);
+            
+            Console.WriteLine(squaredValue);
+
+            Func<string, int> getLength = str => str.Length;
+
+            int length = getLength("banana");
+            Console.WriteLine($"Length:{length}");
+
+            //we can crazy and add all sorts of parameters in and return types
+            Func<int, bool, string, float, List<string>> amazingFunc;
         }
 
         private void DemoPredicate()
         {
+            // a predicate is function that
+            // returns ONLY true or false and takes parameter(s)
+            Predicate<int> isEven
+                = x => x % 2 == 0;
 
+            Predicate<string> isMinLength
+                = str => str.Length > 8;
+
+            Console.WriteLine(isMinLength("Canada"));
         }
+
+        public bool IsEven(int number)
+        {
+            return number % 2 == 0;
+        }
+
+        public bool IsEvenVersionTwo(int number) => number % 2 == 0;
+        
 
         private void DemoLambda()
         {
@@ -294,6 +373,28 @@ namespace GDEngine
         #region List methods
         private void DemoListMethods()
         {
+            List<int> numList = new List<int>{
+                10, 24, 45
+            };
+            numList.ForEach(num => Console.WriteLine(num));
+
+            Console.WriteLine(numList.TrueForAll(num => num > 10));
+
+            List<int> convertedList
+                = numList.ConvertAll(x => x * 2);
+
+            List<Maths.Vector3> vecList
+                = new List<Maths.Vector3>
+                {
+                    10 * Maths.Vector3.One,
+                    new Maths.Vector3(40,50,60),
+                    Maths.Vector3.Up
+                };
+
+            //write single line of code to remove vector3 with mag < N
+            vecList.RemoveAll(vec => vec.Magnitude < 2);  //Lambda predicate
+
+            vecList.ForEach(v => Console.WriteLine(v)); //Lambda action
 
         }
 

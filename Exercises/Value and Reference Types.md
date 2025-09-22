@@ -22,9 +22,4 @@
 **Description**: Create a program that allocates a large number of value type objects (e.g., `int`) and reference type objects (e.g., custom class `GameObject`). Use `Stopwatch` to measure the performance of copying values and references.  
 **Difficulty**: Medium
 
----
-
-### Exercise 5: **Heap and Stack Memory**:  
-**Description**: Explain, using code and comments, how value types and reference types are stored in memory (stack vs. heap). Create a small program to demonstrate this concept.  
-**Difficulty**: Medium
 

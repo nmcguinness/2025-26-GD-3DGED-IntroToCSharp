@@ -66,11 +66,13 @@ The work is structured week-by-week and will be developed **live in class** as a
 - [ ] Add `Clone()` and `DeepCopy()` methods
 - [ ] Add `Forward`, `Right`, and `Up` derived properties
 - [ ] Demonstrate modifying Position and observing effect on copies (shallow vs deep)
+- [ ] Demonstrate `MemberwiseClone` with Player
 - [ ] Add List demo (using Vector3, Transform3D, etc)
 - [ ] Add predicate demo
 - [ ] Add Lambda expression demos
 - [ ] Add Lambda predicate to filter list contents using FindAll
-- [ ] Add methods to demonstrate other List methods taking predicate (e.g., Exists, TrueForAll, RemoveAll)
+- [ ] Add action demo
+- [ ] Add methods to demonstrate other List methods taking action and predicate (e.g., ForEach, ConvertAll, Exists, TrueForAll, RemoveAll)
 - [ ] Discuss difference between Euler angles and Quaternions
 
 #### Testing: Using MSTest

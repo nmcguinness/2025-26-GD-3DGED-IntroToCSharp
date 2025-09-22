@@ -7,7 +7,7 @@ namespace GDEngine
     /// 1. Writing simple methods in C# (add, multiply, divide).
     /// 2. How to instantiate and use custom classes (Vector3, Transform3D).
     /// 3. Selected solutions to the exercises
-     /// </summary>
+    /// </summary>
     public class Program
     {
         // Main() is our entry/insertion point
@@ -29,11 +29,50 @@ namespace GDEngine
             Console.WriteLine("\n--------------- DemoTransform3D() ---------------\n");
             DemoTransform3D();
 
+            //TO DO - finish these methods
+            Console.WriteLine("\n--------------- DemoMemberwiseClone() ---------------\n");
+            DemoMemberwiseClone();
+
+            Console.WriteLine("\n--------------- DemoListMethods() ---------------\n");
+            DemoListMethods();
+
+            Console.WriteLine("\n--------------- DemoAction() ---------------\n");
+            DemoAction();
+
+            Console.WriteLine("\n--------------- DemoPredicate() ---------------\n");
+            DemoPredicate();
+
+            Console.WriteLine("\n--------------- DemoLambda() ---------------\n");
+            DemoLambda();
+
             Console.WriteLine("\n--------------- RunExercises() ---------------\n");
             RunExercises();
 
         }
- 
+
+        #region Math
+
+        private void DemoMathMethods()
+        {
+            // Demo the math-related methods 
+            Console.WriteLine("Divide: " + divide(5, 9));
+            Console.WriteLine("Multiply: " + multiply(3, 4));
+            Console.WriteLine("Add: " + add(7, 2));
+        }
+
+        public int multiply(int x, int y) => x * y;   // Expression-bodied
+
+        public int add(int x, int y)
+        {
+            return x + y;
+        }
+
+        public float divide(int x, int y)
+        {
+            return (float)x / y;
+        }
+        #endregion
+
         #region Vector3
 
         private void DemoVector3()
@@ -219,29 +258,35 @@ namespace GDEngine
 
         #endregion
 
-        #region Math
-
-        private void DemoMathMethods()
+        #region MemberwiseClone
+        /// <see cref="https://www.peteonsoftware.com/index.php/2014/08/31/c-memberwiseclone/"/>
+        private void DemoMemberwiseClone()
         {
-            // Demo the math-related methods 
-            Console.WriteLine("Divide: " + divide(5, 9));
-            Console.WriteLine("Multiply: " + multiply(3, 4));
-            Console.WriteLine("Add: " + add(7, 2));
-        }
-
-        public int multiply(int x, int y) => x * y;   // Expression-bodied
-
-        public int add(int x, int y)
-        {
-            return x + y;
-        }
-
-        public float divide(int x, int y)
-        {
-            return (float)x / y;
+            
         }
         #endregion
 
+        #region List, Action, Predicate
+        private void DemoListMethods()
+        {
+           
+        }
+
+        private void DemoAction()
+        {
+
+        }
+
+        private void DemoPredicate()
+        {
+
+        }
+        private void DemoLambda()
+        {
+
+        }
+        #endregion
+        
         #endregion
 
         #region Exercises

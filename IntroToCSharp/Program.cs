@@ -1,4 +1,5 @@
 ﻿using GDEngine.Maths;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GDEngine
 {
@@ -33,17 +34,20 @@ namespace GDEngine
             Console.WriteLine("\n--------------- DemoMemberwiseClone() ---------------\n");
             DemoMemberwiseClone();
 
-            Console.WriteLine("\n--------------- DemoListMethods() ---------------\n");
-            DemoListMethods();
-
             Console.WriteLine("\n--------------- DemoAction() ---------------\n");
             DemoAction();
+  
+            Console.WriteLine("\n--------------- DemoFunc() ---------------\n");
+            DemoFunc();
 
             Console.WriteLine("\n--------------- DemoPredicate() ---------------\n");
             DemoPredicate();
 
             Console.WriteLine("\n--------------- DemoLambda() ---------------\n");
             DemoLambda();
+
+            Console.WriteLine("\n--------------- DemoListMethods() ---------------\n");
+            DemoListMethods();
 
             Console.WriteLine("\n--------------- RunExercises() ---------------\n");
             RunExercises();
@@ -266,27 +270,36 @@ namespace GDEngine
         }
         #endregion
 
-        #region List, Action, Predicate
-        private void DemoListMethods()
-        {
-           
-        }
-
+        #region Action, Func, Predicate, Lambda
         private void DemoAction()
         {
 
+        }
+
+        private void DemoFunc()
+        {
+         
         }
 
         private void DemoPredicate()
         {
 
         }
+
         private void DemoLambda()
         {
 
         }
         #endregion
-        
+
+        #region List methods
+        private void DemoListMethods()
+        {
+
+        }
+
+        #endregion
+
         #endregion
 
         #region Exercises

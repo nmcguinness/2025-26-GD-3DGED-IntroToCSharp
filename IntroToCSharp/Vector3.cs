@@ -47,6 +47,11 @@
         #endregion
 
         #region Constructors
+        public Vector3()
+            : this(0,0,0)
+        {
+
+        }
         public Vector3(float x, float y, float z)
         {
             _x = x;
@@ -100,7 +105,16 @@
         #endregion
 
         #region Class-specific
-        public float Magnitude => (float)Math.Sqrt(_x * _x + _y * _y + _z * _z);
+        public float Magnitude => (float)Math.Sqrt(SqrMagnitude);
+
+        // Fast mechanism to test for non-zero length vector3
+        public float SqrMagnitude
+        {
+            get
+            {
+                return _x * _x + _y * _y + _z * _z;
+            }
+        }
 
         /// <summary>
         /// Returns a new normalized copy of this vector (non-mutating).

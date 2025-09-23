@@ -39,17 +39,13 @@
 
         #region Constructors
         public Transform3D() //TODO - constructor chaining
+            : this(Maths.Vector3.Zero, Maths.Vector3.Zero, Maths.Vector3.One)
         {
-            _position = Maths.Vector3.Zero;
-            _rotation = Maths.Vector3.Zero;
-            _scale = Maths.Vector3.One;
         }
 
         public Transform3D(Maths.Vector3 position)
+            : this(position, Maths.Vector3.Zero, Maths.Vector3.One)
         {
-            _position = position;
-            _rotation = Maths.Vector3.Zero;
-            _scale = Maths.Vector3.One;
         }
 
         public Transform3D(Maths.Vector3 position,

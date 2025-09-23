@@ -54,7 +54,7 @@ The work is structured week-by-week and will be developed **live in class** as a
   - [x] Group `constants`
 - [x] Discuss pros/cons of using `#region` (readability vs collapsing code hides detail)
 - [x] Add `Magnitude` 
-- [ ] Add `SqrMagnitude` 
+- [x] Add `SqrMagnitude` 
 - [x] Add `Normalize()` method (mutates vector)
 - [x] Add `Normalized` property (returns new normalized vector)
 - [x] Add `Dot(Vector3 a, Vector3 b)` static method
@@ -74,7 +74,7 @@ The work is structured week-by-week and will be developed **live in class** as a
 - [x] Add `class Transform3D` in `GDEngine.Scene`
 - [x] Add `fields` for Position, Rotation, Scale
 - [x] Add default constructor (sets Position=Zero, Rotation=Zero, Scale=One)
-- [ ] Add constructor chaining for `Transform3D(position)`
+- [x] Add constructor chaining for `Transform3D(position)`
 - [x] Add `Translate(Vector3 translation)` method
 - [x] Add `Rotate(Vector3 eulerAngles)` method
 - [x] Add `ScaleBy(Vector3 scaleFactors)` method

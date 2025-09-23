@@ -32,7 +32,15 @@
         /// </summary>
         public static float Clamp(float value)
         {
-            return (value < 0f) ? 0f : (value > 1f) ? 1f : value;
+            // return (value < 0f) ? 0f : (value > 1f) ? 1f : value;
+
+            if (value < 0)
+                return 0;
+            else if (value > 1)
+                return 1;
+            else
+                return value;
+
         }
     }
 }

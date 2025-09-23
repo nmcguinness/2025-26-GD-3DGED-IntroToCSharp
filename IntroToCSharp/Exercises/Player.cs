@@ -11,7 +11,7 @@ namespace Exercises
         private Vector3 position;
         private bool isActive;
 
-        public Guid ID { get => iD;}
+        public Guid ID { get => iD;}  //8---4---4---4---12 (
         public string Name { get => name; set => name = value; }
         public int Health { get => health; set => health = value; }
         public Vector3 Position { get => position; set => position = value; }
@@ -33,7 +33,7 @@ namespace Exercises
 
         public Player(string name, int health, Vector3 position, bool isActive)
         {
-            this.iD = Guid.NewGuid();
+            this.iD = Guid.NewGuid(); //static method in Guid
             this.name = name;
             this.health = health;
             this.position = position;
@@ -45,7 +45,7 @@ namespace Exercises
             return $"Player({iD}, {name}, {health}, {position}, {isActive})";
         }
 
-        //ToString
+        //TODO - Equals
 
     }
 }

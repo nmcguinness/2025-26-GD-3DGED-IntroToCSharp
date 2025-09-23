@@ -436,6 +436,13 @@ namespace GDEngine
 
         private void ExerciseListAndPredicates()
         {
+            // Make two and show that even though contents is same, GUID different
+            Player p1 = new Player("beatrix", 100, new Vector3(1, 2, 3), true);
+            Console.WriteLine(p1);
+
+            Player p2 = new Player("beatrix", 100, new Vector3(1, 2, 3), true);
+            Console.WriteLine(p2);
+
             //Question 1
             List<Player> playerList = new List<Player>
             {
@@ -448,8 +455,27 @@ namespace GDEngine
             List<Player> activePlayers = playerList.FindAll(p => p.IsActive);
             activePlayers.ForEach(p => Console.WriteLine(p));
 
+            //Question 2
+            Player? foundPlayer = playerList.Find(p => p.Name.Equals("beatrix"));
+            Console.WriteLine(foundPlayer);
 
+            //Question 3 - TODO
+            playerList.Sort((a,b) => a.Health.CompareTo(b.Health));
+            playerList.ForEach(p => Console.WriteLine(p));
+
+            //a - b > 0 => ASCENDING
+            //a - b < 0 => DESCENDING
+            //a - b = 0 => IDENTICAL
+
+            //Question 5 - Sort, then take first
+            Console.WriteLine(playerList[0]);
         }
+
+        public int SortByHealth(Player a, Player b)
+        {
+            return a.Health - b.Health;
+        }
+
 
         public void ExerciseClassDefinition()
         {
@@ -492,7 +518,7 @@ namespace GDEngine
             ColorRGBA backToRGB = ColorRGBA.FromHSV(hsv);
             Console.WriteLine($"HSV -> RGB = {backToRGB}");
         }
-
+        
         #endregion
     }
 }

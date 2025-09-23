@@ -31,6 +31,12 @@ namespace Exercises
 
         }
 
+        public Player(string name, int health, bool isActive)
+        : this(name, health, Vector3.Zero, isActive)
+        {
+
+        }
+
         public Player(string name, int health, Vector3 position, bool isActive)
         {
             this.iD = Guid.NewGuid(); //static method in Guid

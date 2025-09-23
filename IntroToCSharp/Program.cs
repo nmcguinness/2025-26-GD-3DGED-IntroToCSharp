@@ -1,7 +1,6 @@
 ﻿using Exercises;
 using GDEngine.Maths;
 using GDEngine.Scene;
-using System.Data.SqlTypes;
 
 namespace GDEngine
 {
@@ -436,6 +435,8 @@ namespace GDEngine
 
         private void ExerciseListAndPredicates()
         {
+            Console.WriteLine("\n--- Two player objects with the same contents but different GUID ---");
+
             // Make two and show that even though contents is same, GUID different
             Player p1 = new Player("beatrix", 100, new Vector3(1, 2, 3), true);
             Console.WriteLine(p1);
@@ -444,22 +445,25 @@ namespace GDEngine
             Console.WriteLine(p2);
 
             //Question 1
+            Console.WriteLine("\n--- Q1: Find active players ---");
             List<Player> playerList = new List<Player>
             {
-                new Player("andrea", false),
+                new Player("andrea", 80, false),
                 new Player("beatrix", 100, new Vector3(1,2,3), true),
-                new Player("ciaran", 50),
-                new Player("dorian", true)
+                new Player("ciaran", 50, true),
+                new Player("dorian", 99, false)
             };
 
             List<Player> activePlayers = playerList.FindAll(p => p.IsActive);
             activePlayers.ForEach(p => Console.WriteLine(p));
 
             //Question 2
+            Console.WriteLine("\n--- Q2: Find beatrix ---");
             Player? foundPlayer = playerList.Find(p => p.Name.Equals("beatrix"));
             Console.WriteLine(foundPlayer);
 
             //Question 3 - TODO
+            Console.WriteLine("\n--- Q2: Sort players by health ASCENDING ---");
             playerList.Sort((a,b) => a.Health.CompareTo(b.Health));
             playerList.ForEach(p => Console.WriteLine(p));
 
@@ -467,8 +471,9 @@ namespace GDEngine
             //a - b < 0 => DESCENDING
             //a - b = 0 => IDENTICAL
 
-            //Question 5 - Sort, then take first
-            Console.WriteLine(playerList[0]);
+            //Question 5 - Sort, then take last
+            Console.WriteLine("\n--- Q2: Find players with highest health ---");
+            Console.WriteLine(playerList[playerList.Count-1]);
         }
 
         public int SortByHealth(Player a, Player b)

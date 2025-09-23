@@ -1,4 +1,5 @@
-﻿using GDEngine.Maths;
+﻿using Exercises;
+using GDEngine.Maths;
 using GDEngine.Scene;
 using System.Data.SqlTypes;
 
@@ -428,6 +429,26 @@ namespace GDEngine
         {
             Console.WriteLine("\n--------------- ExerciseClassDefinition() ---------------\n");
             ExerciseClassDefinition();
+
+            Console.WriteLine("\n--------------- ExerciseListAndPredicates() ---------------\n");
+            ExerciseListAndPredicates();
+        }
+
+        private void ExerciseListAndPredicates()
+        {
+            //Question 1
+            List<Player> playerList = new List<Player>
+            {
+                new Player("andrea", false),
+                new Player("beatrix", 100, new Vector3(1,2,3), true),
+                new Player("ciaran", 50),
+                new Player("dorian", true)
+            };
+
+            List<Player> activePlayers = playerList.FindAll(p => p.IsActive);
+            activePlayers.ForEach(p => Console.WriteLine(p));
+
+
         }
 
         public void ExerciseClassDefinition()

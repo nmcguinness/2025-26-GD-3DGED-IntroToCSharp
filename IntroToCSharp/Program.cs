@@ -1,7 +1,6 @@
 ﻿using GDEngine.Maths;
 using GDEngine.Scene;
-using System.Numerics;
-using System.Reflection.Metadata.Ecma335;
+using System.Data.SqlTypes;
 
 namespace GDEngine
 {
@@ -17,7 +16,10 @@ namespace GDEngine
         public static void Main(string[] args)
         {
             Program app = new Program();
+
             app.RunDemos();
+
+            app.RunExercises();
         }
 
         #region Demos
@@ -32,10 +34,6 @@ namespace GDEngine
             Console.WriteLine("\n--------------- DemoTransform3D() ---------------\n");
             DemoTransform3D();
 
-            //TO DO - finish these methods
-            Console.WriteLine("\n--------------- DemoMemberwiseClone() ---------------\n");
-            DemoMemberwiseClone();
-
             Console.WriteLine("\n--------------- DemoAction() ---------------\n");
             DemoAction();
   
@@ -45,15 +43,8 @@ namespace GDEngine
             Console.WriteLine("\n--------------- DemoPredicate() ---------------\n");
             DemoPredicate();
 
-            Console.WriteLine("\n--------------- DemoLambda() ---------------\n");
-            DemoLambda();
-
             Console.WriteLine("\n--------------- DemoListMethods() ---------------\n");
             DemoListMethods();
-
-            Console.WriteLine("\n--------------- RunExercises() ---------------\n");
-            RunExercises();
-
         }
 
         #region Math
@@ -262,46 +253,31 @@ namespace GDEngine
 
         #endregion
 
-        #region MemberwiseClone
-        /// <see cref="https://www.peteonsoftware.com/index.php/2014/08/31/c-memberwiseclone/"/>
-        private void DemoMemberwiseClone()
-        {
-            
-        }
-        #endregion
-
         #region Action, Func, Predicate, Lambda
         private void DemoAction()
         {
-            //an action perform operation on parameter(s) and return void
-            Action<string> toLowerAndPrint
-                = s => Console.WriteLine(s.ToLower());
+            // 1. Action<T> with one parameter
+            Action<string> toLowerAndPrint = s => Console.WriteLine(s.ToLower());
+            toLowerAndPrint("RoBERtA"); // output: "roberta"
 
-            toLowerAndPrint("RoBERtA");
+            // 2. Action<T> with multi-line body
+            Action<int> testNegativeAndNotify = number =>
+            {
+                string msg = number > 0 ? "Positive" : "Negative or Zero";
+                Console.WriteLine(msg);
+            };
+            testNegativeAndNotify(-5); // output: "Negative or Zero"
 
-            // Action<string> toLowerAndPrint
-            //= public string DoSomething(string s)
-            // {
+            // 3. Action<T> with multiple parameters
+            Action<int, int> playSound = (freq, ms) => Console.Beep(freq, ms);
+            playSound(1000, 500); // short beep
 
-            //     Console.WriteLine(s.ToLower());
-            // }
-
-            Action<int> testNegativeAndNotify
-                = (number)
-                =>
-                {
-                    string msg = number > 0 ? "Positive message" : "Negative message";
-                    Console.WriteLine(msg);
-                };
-
-            Action<int> dblValue = x => Console.WriteLine(x * 2);
-
-            Action<int, int> playSound
-                = (freq, timeMs) => Console.Beep(freq, timeMs);
-
-            playSound(4000, 3000);
-            Beep(6000, 2000);
+            // 4. Real-world use: processing a list
+            List<int> nums = new List<int> { 1, 2, 3, 4, 5 };
+            Action<int> printDouble = n => Console.WriteLine(n * 2);
+            nums.ForEach(printDouble); // output: 2, 4, 6, 8, 10
         }
+
 
         public void DoSomethingFunky(Action<int, int> theAction, 
             int p1, int p2)
@@ -324,37 +300,61 @@ namespace GDEngine
 
 
         private void DemoFunc()
-        {
-            //a func is an action with a RETURN type
+        { 
+            // 1. Func with one input, one output
+            // Func<int, int> means: take an int, return an int
+            Func<int, int> square = x => x * x;
+            Console.WriteLine($"Square of 5 = {square(5)}");  // output: 25
 
-            Func<int, int> sqrValue
-                = banana => banana * banana;
-            
-            var squaredValue = sqrValue(9);
-            
-            Console.WriteLine(squaredValue);
+            // 2. Func with different input/output types
+            // Func<string, int> means: take a string, return its length as int
+            Func<string, int> getLength = s => s.Length;
+            Console.WriteLine($"Length of 'banana' = {getLength("banana")}");  // output: 6
 
-            Func<string, int> getLength = str => str.Length;
+            // 3. Func with multiple parameters
+            // Func<int, int, int> means: take two ints, return an int
+            Func<int, int, int> add = (a, b) => a + b;
+            Console.WriteLine($"3 + 4 = {add(3, 4)}");  // output: 7
 
-            int length = getLength("banana");
-            Console.WriteLine($"Length:{length}");
+            // 4. Func with a collection (real-world use, string processing)
+            List<string> names = new List<string> { "alice", "bob", "charlie" };
 
-            //we can crazy and add all sorts of parameters in and return types
-            Func<int, bool, string, float, List<string>> amazingFunc;
+            // Convert all names by capitalising the first letter
+            List<string> capitalisedNames = names.ConvertAll(
+                s => char.ToUpper(s[0]) + s.Substring(1)
+            );
+
+            Console.WriteLine("Capitalised names:");
+            capitalisedNames.ForEach(n => Console.WriteLine(n));
+
+
         }
 
         private void DemoPredicate()
         {
-            // a predicate is function that
-            // returns ONLY true or false and takes parameter(s)
-            Predicate<int> isEven
-                = x => x % 2 == 0;
+            // 1. Basic example with numbers
+            // Predicate<int> means: takes an int, returns true/false
+            Predicate<int> isEven = x => (x % 2 == 0);
 
-            Predicate<string> isMinLength
-                = str => str.Length > 8;
+            Console.WriteLine($"Is 4 even? {isEven(4)}");   // true
+            Console.WriteLine($"Is 7 even? {isEven(7)}");   // false
 
-            Console.WriteLine(isMinLength("Canada"));
+            // 2. Predicate<string> for simple validation
+            Predicate<string> isLongerThan = s => s.Length > 5;
+
+            Console.WriteLine($"Is 'Canada' longer than 5? {isLongerThan("Canada")}");
+            Console.WriteLine($"Is 'UK' longer than 5? {isLongerThan("UK")}");
+
+            // 3. Real-world use: filtering a list
+            List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+            // Remove all numbers that do NOT match the predicate (keep only evens)
+            numbers.RemoveAll(n => isEven(n));
+
+            Console.WriteLine("Odd numbers left in the list:");
+            numbers.ForEach(n => Console.WriteLine(n));
         }
+
 
         public bool IsEven(int number)
         {
@@ -362,49 +362,71 @@ namespace GDEngine
         }
 
         public bool IsEvenVersionTwo(int number) => number % 2 == 0;
-        
 
-        private void DemoLambda()
-        {
-
-        }
         #endregion
 
         #region List methods
         private void DemoListMethods()
         {
-            List<int> numList = new List<int>{
-                10, 24, 45
-            };
-            numList.ForEach(num => Console.WriteLine(num));
+            // 1. Create a list of integers
+            List<int> numberList = new List<int> { 10, 24, 45, 100, 75 };
 
-            Console.WriteLine(numList.TrueForAll(num => num > 10));
+            // 2. ForEach(Action<T>) – apply an Action to each element
+            Console.WriteLine("Numbers in the list:");
+            numberList.ForEach(n => Console.WriteLine(n));
 
-            List<int> convertedList
-                = numList.ConvertAll(x => x * 2);
+            // 3. TrueForAll(Predicate<T>) – check if all items match a condition
+            bool allGreaterThanValue = numberList.TrueForAll(n => n > 10);
+            Console.WriteLine($"Are all numbers > 10? {allGreaterThanValue}");
 
-            List<Maths.Vector3> vecList
-                = new List<Maths.Vector3>
+            // 4. ConvertAll(Func<T, TResult>) – create a new list with transformed elements
+            List<int> doubled = numberList.ConvertAll(n => n * 2);
+            Console.WriteLine("Doubled numbers:");
+            doubled.ForEach(n => Console.WriteLine(n));
+
+            // 5. RemoveAll(Predicate<T>) – remove elements that match a condition
+            numberList.RemoveAll(n => n < 20);
+            Console.WriteLine("After removing numbers < 20:");
+            numberList.ForEach(n => Console.WriteLine(n));
+
+            // 6. Find(Predicate<T>) – returns the FIRST item matching the condition
+            int firstOverThresholdValue = numberList.Find(n => n > 50);
+            Console.WriteLine($"First number > 50: {firstOverThresholdValue}");
+
+            // 7. FindAll(Predicate<T>) – returns ALL items matching the condition
+            List<int> allEven = numberList.FindAll(n => n % 2 == 0);
+            Console.WriteLine("All even numbers:");
+            allEven.ForEach(n => Console.WriteLine(n));
+
+            // 8. Exists(Predicate<T>) – returns true if ANY item matches
+            bool hasMaxValue = numberList.Exists(n => n == 100);
+            Console.WriteLine($"Does the list contain max value for health? {hasMaxValue}");
+
+            // 9. Using List<Vector3>
+            List<Vector3> vectors = new List<Vector3>
                 {
-                    10 * Maths.Vector3.One,
-                    new Maths.Vector3(40,50,60),
-                    Maths.Vector3.Up
+                    10 * Vector3.One,
+                    new Vector3(40, 50, 60),
+                    Vector3.Up
                 };
 
-            //write single line of code to remove vector3 with mag < N
-            vecList.RemoveAll(vec => vec.Magnitude < 2);  //Lambda predicate
-
-            vecList.ForEach(v => Console.WriteLine(v)); //Lambda action
-
+            // 10. RemoveAll(Predicate<T>) – remove vectors with magnitude < 2
+            vectors.RemoveAll(v => v.Magnitude < 2);
+            Console.WriteLine("Remaining vectors (magnitude >= 2):");
+            vectors.ForEach(v => Console.WriteLine(v));
         }
+
+
 
         #endregion
 
         #endregion
 
         #region Exercises
+
         public void RunExercises()
         {
+            Console.WriteLine("\n--------------- ExerciseClassDefinition() ---------------\n");
             ExerciseClassDefinition();
         }
 

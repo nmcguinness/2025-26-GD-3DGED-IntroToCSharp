@@ -102,7 +102,6 @@
         #endregion
 
         // TODO - Transform3D additions
-        // - Clone, DeepCopy
         // - Parent/child hierarchy 
         // - Local vs world space conversions
         // - Forward/Right/Up vectors derived from Rotation

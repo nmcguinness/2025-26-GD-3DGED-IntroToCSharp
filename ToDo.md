@@ -16,10 +16,28 @@ The work is structured week-by-week and will be developed **live in class** as a
 - Unit tests are implemented in a **separate MSTest project** after the class implementation is stable.
 - Each week builds on the previous week.
 
+## Exercises
+
+### Week 2 - ColorRGBA from [Class Definition](Exercises/Class%20Definition.md)
+- [x] Add `class ColorRGBA` in `GDEngine.Maths`
+- [x] Add fields `_r`, `_g`, `_b`, `_a`
+- [x] Add properties `R`, `G`, `B`, `A` with clamping (0–1)
+- [x] Add constructors (default = white, custom RGBA)
+- [x] Add `ToString()` override
+- [x] Add `ToGrayscale()` method
+- [x] Add operator overloads: `+` (color + color), `*` (color * scalar)
+- [x] Add static helpers: `Red`, `Green`, `Blue`, `Black`, `White`
+- [x] Add `DeepCopy()` method
+- [x] Add `Lerp(ColorRGBA a, ColorRGBA b, float t)` method
+- [x] Add HSV conversion methods (`ToHSV`, `FromHSV`)
+- [ ] Add unit tests for `ToGrayscale`, `Lerp`, and HSV conversion
+
+---
+
 ### Week 1
 
 #### C# Refresher: Vector3 Class
-- [x] Add `namespace` (e.g., `GDEngine.Math`)
+- [x] Add `namespace` (e.g., `GDEngine.Maths`)
 - [x] Add `class Vector3`
 - [x] Add `fields` (`X`, `Y`, `Z`)
 - [x] Add constructor `(float x, float y, float z)`
@@ -43,37 +61,45 @@ The work is structured week-by-week and will be developed **live in class** as a
 - [x] Add `Cross(Vector3 a, Vector3 b)` static method
 - [x] Add operator overloads: `+`, `-`, `*`, `/`
 - [x] Add static helpers: `Zero`, `One`, `Up`, `Down`, `Forward`, `Backward`
-- [ ] Discuss `struct` vs `class` (value vs reference types)
-- [ ] Discuss performance: `SqrMagnitude` vs `Magnitude`
 - [x] Tidy Program demos
 
 ### Week 2
 
 #### Extensions: Cloning & Code Organization
 - [x] Add `Clone()` method (shallow copy using `MemberwiseClone`)
-- [x] Add deep cloning method (`DeepClone()`) – manually copy all fields
-- [ ] Demonstrate difference between shallow vs deep copies
+- [x] Add deep cloning method (`DeepCopy()`) – manually copy all fields
+- [x] Demonstrate difference between shallow vs deep copies
 
 #### C# Extension: Transform3D Class
-- [x] Add `class Transform` in `GDEngine.Scene`
+- [x] Add `class Transform3D` in `GDEngine.Scene`
 - [x] Add `fields` for Position, Rotation, Scale
 - [x] Add default constructor (sets Position=Zero, Rotation=Zero, Scale=One)
-- [ ] Add constructor chaining for `Transform(position)`
+- [ ] Add constructor chaining for `Transform3D(position)`
 - [x] Add `Translate(Vector3 translation)` method
 - [x] Add `Rotate(Vector3 eulerAngles)` method
 - [x] Add `ScaleBy(Vector3 scaleFactors)` method
 - [x] Add `ToString()` override
-- [ ] Add `Clone()` and `DeepCopy()` methods
-- [ ] Add `Forward`, `Right`, and `Up` derived properties
-- [ ] Demonstrate modifying Position and observing effect on copies (shallow vs deep)
-- [ ] Demonstrate `MemberwiseClone` with Player
-- [ ] Add List demo (using Vector3, Transform3D, etc)
-- [ ] Add predicate demo
-- [ ] Add Lambda expression demos
-- [ ] Add Lambda predicate to filter list contents using FindAll
-- [ ] Add action demo
-- [ ] Add methods to demonstrate other List methods taking action and predicate (e.g., ForEach, ConvertAll, Exists, TrueForAll, RemoveAll)
-- [ ] Discuss difference between Euler angles and Quaternions
+- [x] Add `Clone()` and `DeepCopy()` methods
+- [x] Demonstrate modifying Position and observing effect on copies (shallow vs deep)
+
+#### GDMath Helpers
+- [x] Add `class GDMath` in `GDEngine.Maths`
+- [x] Add `Clamp(float value)` method
+- [x] Add `ToDegrees(float radians)` method
+- [x] Add `ToRadians(float degrees)` method
+
+#### Delegates and Functional Programming
+- [x] Add `Action` demo
+- [x] Add `Func` demo
+- [x] Add `Predicate` demo
+- [x] Add Lambda expression demos
+- [x] Demonstrate using delegates with lists:
+  - [x] `ForEach` (Action)
+  - [x] `ConvertAll` (Func)
+  - [x] `RemoveAll` (Predicate)
+  - [x] `TrueForAll` (Predicate)
+  - [x] `Find` / `FindAll` (Predicate)
+  - [x] `Exists` (Predicate)
 
 #### Testing: Using MSTest
 - [ ] Create a **separate MSTest project** in the solution (`GDEngine.Tests`)
@@ -85,15 +111,16 @@ The work is structured week-by-week and will be developed **live in class** as a
 - [ ] Test: operator overloads (`+`, `-`, `*`, `/`)
 - [ ] Test: static helpers (`Zero`, `One`, `Up`, etc.)
 - [ ] Test: shallow vs deep cloning differences
-- [ ] Run all tests and verify.
+- [ ] Test: ColorRGBA methods (`ToGrayscale`, `Lerp`, `HSV conversions`)
+- [ ] Test: GDMath methods (`Clamp`, `ToDegrees`, `ToRadians`)
+- [ ] Run all tests and verify
 - [ ] Discuss importance of separating engine code from tests
 
- 
 ### Week N...
+- [ ] Demonstrate `MemberwiseClone` with Player
+- [ ] Add `Forward`, `Right`, and `Up` derived properties to Transform3D
 - [ ] Use `ref` and `out` in a function call (see Program)
-- [ ] Use IComparer in a collection demo 
-- [ ] Use Comparison in a collection demo 
+- [ ] Use `IComparer` in a collection demo 
+- [ ] Use `Comparison` in a collection demo 
 - [ ] Add event and delegate demo - see EventGenerator
-- [ ] Add Action, Func, Predicate demo - see Program 
 - [ ] Add Singleton pattern demo - see InventoryManager
-

@@ -65,13 +65,12 @@ The module descriptor can be viewed [here](https://courses.dkit.ie/index.cfm/pag
 - [Standard numeric format strings](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings)
 ## Exercises
 
-1. [Namespace Definition](Exercises/Namespace%20Definition.md)
-2. [Class Definition](Exercises/Class%20Definition.md)
-3. [Value & Reference Types](Exercises/Value%20and%20Reference%20Types.md)
-4. [Structs and Enums](Exercises/Structs%20and%20Enums.md)
-5. [Lists & Predicates](Exercises/Lists%20and%20Predicates.md)
-6. [Keywords](Exercises/Keywords.md)
-7. [Design Exercises](Exercises/Design%20Exercises.md)
+1. [Class Definition](Exercises/Class%20Definition.md)
+2. [Lists & Predicates](Exercises/Lists%20and%20Predicates.md)
+3. [Enums](Exercises/Enums.md)
+4. [Structs](Exercises/Structs.md)
+5. [Keywords](Exercises/Keywords.md)
+6. [Interfaces](Exercises/Interfaces.md)
 
 ## Useful Links
 - [Markdown](https://docs.github.com/en/enterprise-cloud@latest/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) in GitHub

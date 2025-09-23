@@ -88,7 +88,7 @@ namespace GDEngine.Maths
 
         #region Overrides
         public override string ToString() =>
-            $"({_r}, {_g}, {_b})";
+            $"({_r:F2}, {_g:F2}, {_b:F2})";
         #endregion
 
         #region Cloning

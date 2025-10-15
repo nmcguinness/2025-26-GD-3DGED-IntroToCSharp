@@ -1,4 +1,4 @@
-# C# Coding Conventions – GDEngine Module
+# C# Coding Conventions - GDEngine Module
 
 ## Overview
 Consistent coding style improves readability, reduces bugs, and makes collaboration easier.  
